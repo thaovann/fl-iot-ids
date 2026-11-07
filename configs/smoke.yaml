@@ -1,0 +1,33 @@
+# Chạy thử nhanh trên dữ liệu giả (scripts/make_synthetic.py), vài phút trên CPU.
+name: smoke
+data:
+  root: data/synthetic
+  max_rows_train: 0
+  max_rows_test: 0
+  block_size: 1000
+window:
+  fw: 64
+  fs: 8
+partition:
+  schemes: [iid, "dirichlet:0.5", filepart]
+  n_clients: 4
+fs:
+  methods: [full, random, central_mi_rfe, fed_mi, fed_chi2, fed_mi_rfe, rank_chi2_median, scoresum_chi2]
+  k_list: [5, 10]
+  top_k_mi: 30
+  rfe_step_frac: 0.2
+  rfe_max_samples: 3000
+  rf_trees: 30
+attack:
+  enabled: true
+  m_list: [0, 1]
+models:
+  methods: [central_xgb, fedxgb_bag, fedxgb_cyclic, fedavg_mlp]
+  local_xgb: true
+  xgb: {n_estimators_central: 30}
+  fedxgb: {rounds: 4, trees_per_client_round: 3}
+  mlp: {rounds: 3, local_epochs: 1}
+seeds: [42]
+paths:
+  cache_dir: runs/cache
+  out_dir: runs/results

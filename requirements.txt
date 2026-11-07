@@ -1,0 +1,10 @@
+# Colab đã có sẵn phần lớn các gói này; pip chỉ cài thêm khi thiếu.
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+scikit-learn>=1.3
+xgboost>=2.0
+pyyaml>=6.0
+tqdm>=4.65
+# torch chỉ cần cho FedAvg/FedProx-MLP (Colab có sẵn)
+# torch>=2.1

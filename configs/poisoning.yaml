@@ -1,0 +1,20 @@
+# Đầu độc bước chọn đặc trưng (Phần III): rank vs score-sum vs thống kê đủ dưới m client độc hại.
+name: ciciomt2024_poisoning
+data:
+  root: /content/drive/MyDrive/CICIoMT2024/WiFI_and_MQTT/attacks/CSV
+partition:
+  schemes: [iid, filepart, "dirichlet:0.3"]
+  n_clients: 10
+fs:
+  methods: [rank_chi2_median, rank_chi2_mean, rank_chi2_trimmed, rank_mi_rfe_median, scoresum_chi2, fed_chi2]
+  k_list: [20]
+attack:
+  enabled: true
+  m_list: [0, 1, 2, 3, 4]
+  kind: promote_worst      # promote_worst | score_dominate | inflate_n
+models:
+  methods: [central_xgb]
+seeds: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+paths:
+  cache_dir: /content/drive/MyDrive/fl-iot-ids/cache
+  out_dir: /content/drive/MyDrive/fl-iot-ids/results

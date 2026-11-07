@@ -1,0 +1,25 @@
+# Cấu hình chính theo methodology-FL-CICIoMT2024.md (cửa sổ theo file, FW=512, FS=8, giữ Protocol).
+# Sửa data.root cho đúng chỗ bạn để CSV CICFlowMeter trên Drive.
+name: ciciomt2024_main
+data:
+  root: /content/drive/MyDrive/CICIoMT2024/WiFI_and_MQTT/attacks/CSV
+  max_rows_train: 50000
+  max_rows_test: 100000
+  block_size: 5000
+window:
+  fw: 512
+  fs: 8
+partition:
+  schemes: [iid, "dirichlet:0.1", "dirichlet:0.5", "dirichlet:1.0", filepart]
+  n_clients: 5
+  n_clients_filepart: 4
+fs:
+  methods: [full, random, central_mi_rfe, fed_mi, fed_chi2, fed_mi_rfe, rank_chi2_median, rank_mi_rfe_median]
+  k_list: [5, 10, 15, 20, 30, 50]
+models:
+  methods: [central_xgb, fedxgb_bag, fedavg_mlp]
+  local_xgb: true
+seeds: [42, 43, 44, 45, 46]
+paths:
+  cache_dir: /content/drive/MyDrive/fl-iot-ids/cache
+  out_dir: /content/drive/MyDrive/fl-iot-ids/results
