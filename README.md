@@ -52,9 +52,10 @@ fl_ids/
   models.py             central_xgb, fedxgb_bag, fedxgb_cyclic, fedavg_mlp, fedprox_mlp:<μ>, central_mlp, local_xgb
   metrics.py            độ đo nhị phân, chọn ngưỡng τ trên val liên kết
   experiment.py         vòng lặp thí nghiệm, ghi kết quả dần, resume
+  fs_poison.py          B2: tấn công chiếm chỗ (oracle + CSP liên kết) và bộ gộp χ², xem docs/B2.md
 configs/                ciciomt2024.yaml (chính), poisoning.yaml (Phần III), smoke.yaml (dữ liệu giả)
 notebooks/              colab_fl_ids.ipynb (sinh từ scripts/build_notebook.py)
-scripts/                run_experiment.py, make_synthetic.py, build_notebook.py
+scripts/                run_experiment.py, make_synthetic.py, build_notebook.py, run_b2.py (docs/B2.md)
 tests/                  kiểm tra nhanh (pytest)
 ```
 
